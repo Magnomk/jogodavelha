@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -203,7 +202,7 @@ public class JogoVelha {
 
     static int[] converterJogadaStringParaVetorInt(String jogada) {
         if (jogada == null || jogada.length() != 2 || !jogada.matches("[0-9]{2}")) {
-            throw new IllegalArgumentException("A jogada deve ser uma string com dois números.");
+            System.out.println("A jogada deve ser uma string com dois números.");
         }
 
         int[] posicao = new int[2];
@@ -320,18 +319,22 @@ public class JogoVelha {
         return true;
     }
 
-    // static void limparTela() throws InterruptedException, IOException {
-    // new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-    // }
-
-    // Limpar tela para Linux
     static void limparTela() {
         try {
-            new ProcessBuilder("clear").inheritIO().start().waitFor();
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    // Limpar tela para Linux
+    // static void limparTela(){
+    // try {
+    // new ProcessBuilder("clear").inheritIO().start().waitFor();
+    // } catch(Exception e) {
+    // e.printStackTrace();
+    // }
+    // }
 
     static void exibirTabuleiro(char[][] tabuleiro) {
         limparTela();
